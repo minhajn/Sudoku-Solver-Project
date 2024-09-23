@@ -96,7 +96,6 @@ public class AdvancedSudokuSolver extends JFrame {
         }
     }
 
-    // Solve using Constraint Propagation with Backtracking
     private boolean solveWithConstraintPropagation() {
         return pool.invoke(new ParallelSudokuSolver(board, 0, 0));
     }
@@ -137,7 +136,7 @@ public class AdvancedSudokuSolver extends JFrame {
                         return true;
                     }
 
-                    localBoard[row][col] = 0; // Backtrack
+                    localBoard[row][col] = 0;
                 }
             }
 
@@ -145,21 +144,18 @@ public class AdvancedSudokuSolver extends JFrame {
         }
 
         private boolean isValid(int[][] board, int row, int col, int num) {
-            // Check the row for duplicates
             for (int i = 0; i < SIZE; i++) {
                 if (board[row][i] == num) {
                     return false;
                 }
             }
 
-            // Check the column for duplicates
             for (int i = 0; i < SIZE; i++) {
                 if (board[i][col] == num) {
                     return false;
                 }
             }
 
-            // Check the 3x3 subgrid for duplicates
             int startRow = row - row % 3;
             int startCol = col - col % 3;
             for (int i = 0; i < 3; i++) {
@@ -170,7 +166,7 @@ public class AdvancedSudokuSolver extends JFrame {
                 }
             }
 
-            return true; // No conflicts found
+            return true;
         }
 
         private void updateBoard(int[][] solvedBoard) {
@@ -180,7 +176,6 @@ public class AdvancedSudokuSolver extends JFrame {
         }
     }
 
-    // Generate a Sudoku puzzle with difficulty levels
     private void generatePuzzleWithDifficulty(String difficulty) {
         clearBoard();
         int clues = 0;
@@ -201,21 +196,18 @@ public class AdvancedSudokuSolver extends JFrame {
     }
 
     private boolean isValid(int[][] board, int row, int col, int num) {
-        // Check the row for duplicates
         for (int i = 0; i < SIZE; i++) {
             if (board[row][i] == num) {
                 return false;
             }
         }
 
-        // Check the column for duplicates
         for (int i = 0; i < SIZE; i++) {
             if (board[i][col] == num) {
                 return false;
             }
         }
 
-        // Check the 3x3 subgrid for duplicates
         int startRow = row - row % 3;
         int startCol = col - col % 3;
         for (int i = 0; i < 3; i++) {
@@ -226,7 +218,7 @@ public class AdvancedSudokuSolver extends JFrame {
             }
         }
 
-        return true; // No conflicts found
+        return true;
     }
 
     private void clearBoard() {
